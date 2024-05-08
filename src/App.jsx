@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Axios } from "axios";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -7,46 +8,19 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 import { Avatar, Card, Dropdown, Space } from "antd";
-const items = [
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-    key: "1",
-  },
-  {
-    type: "divider",
-  },
-];
 
 const { Meta } = Card;
 
 const App = () => {
   const [data, setData] = useState([]);
+  useEffect(() => {}, []);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/todos")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  // }, []);
 
   return (
     <div>
@@ -63,8 +37,11 @@ const App = () => {
             }
             actions={[
               <SettingOutlined key="setting" />,
-              <EditOutlined key="edit" onClick={(e) => e.preventDefault()} />,
-              <EllipsisOutlined key="ellipsis" />,
+              <EditOutlined key="edit" />,
+              <EllipsisOutlined
+                key="ellipsis"
+                onClick={(e) => e.preventDefault()}
+              />,
             ]}
           >
             <Meta
